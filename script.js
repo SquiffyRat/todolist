@@ -8,31 +8,32 @@ function inputBtn() {
   const taskText = textInput.textContent.trim();
 
   if (taskText !== '') {
-    const taskItem
-    taskText = document.appendChild();
+    const taskItem = createTaskList(taskText);
+    textList.appendChild(taskItem);
     tasks.push(taskText);
     saveTask(tasks);
     textInput = '';
   }
 }
 
-function name(params) {
+function createTaskList(taskText) {
   const taskItem = document.createElement('li');
   taskItem.textContent = taskText;
+  taskItem.addEventListener('click', taskComplete)
 
   const removeButton = document.createElement('button');
   removeButton.textContent = 'X';
-  removeButton.addEventListener('click', taskComplete);
+  removeButton.addEventListener('click', taskDelete);
+  taskItem.appendChild(removeButton);
   return taskItem;
 }
 
 function taskComplete(event) {
-  event.target.closest('li');
-  taskItem.classlist.add('completed');
-  taskItem.addEventListener('click', taskDelete);
+  const taskItem = event.target.closest('li');
+  taskItem.classList.toggle('completed');
 }
 function taskDelete(event) {
-  event.target.closest('li');
+  const taskItem = event.target.closest('li');
   taskItem.parentNode.removeChild(taskItem);
 }
 
