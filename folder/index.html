@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+    <style>
+      .completed {
+        text-decoration: line-through;
+        color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>To Do List</h1>
+    <input type="text" id="textInput" placeholder="할 일을 입력하세요" />
+    <button id="addBtn">추가</button>
+    <ul id="textList"></ul>
+    <script>
+      const textInput = document.getElementById('textInput');
+      const addBtn = document.getElementById('addBtn');
+      const textList = document.getElementById('textList');
+
+      addBtn.addEventListener('click', pushBtn);
+      function pushBtn() {
+        const tasktext = textInput.value.trim();
+        const taskList = document.createElement('li');
+        taskList.textContent = tasktext;
+        textList.appendChild(taskList);
+        textInput.value = '';
+        taskList.addEventListener('click', taskDone);
+      }
+      function taskDone(event) {
+        const taskList = event.target;
+        taskList.classList.add('completed');
+        taskList.addEventListener('click', taskDelete);
+      }
+      function taskDelete(event) {
+        const taskList = event.target;
+        taskList.parentNode.removeChild(taskList);
+      }
+    </script>
+  </body>
+</html>
