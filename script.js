@@ -1,7 +1,7 @@
 const textInput = document.getElementById('textInput');
 const addBtn = document.getElementById('addBtn');
 const textList = document.getElementById('textList');
-let texts = [];
+let tasks = [];
 
 addBtn.addEventListener('click', inputBtn);
 function inputBtn() {
@@ -19,7 +19,7 @@ function inputBtn() {
 function createTaskList(taskText) {
   const taskItem = document.createElement('li');
   taskItem.textContent = taskText;
-  taskItem.addEventListener('click', taskComplete)
+  taskItem.addEventListener('click', taskComplete);
 
   const removeButton = document.createElement('button');
   removeButton.textContent = 'X';
